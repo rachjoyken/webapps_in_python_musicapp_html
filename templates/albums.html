@@ -1,12 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Albums</title>
-</head>
-<body>
-    <div>
-        {{album}}
-    </div>
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <title>Album List</title>
+    </head>
+    <body>
+        <h1>Albums</h1>
+
+        {% for album in albums %}
+        <article>
+            <h2>{{album}}</h2>
+            <p>{{album.release_year}}</p>
+        </article>
+        {% endfor %}
+    </body>
 </html>

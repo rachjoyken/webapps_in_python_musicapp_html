@@ -27,9 +27,19 @@ def get_emoji():
 #         f"{album}" for album in repository.all()
 #     )
 
-@app.route('/albums', methods=['GET'])
+# @app.route('/albums', methods=['GET'])
+# def get_albums():
+#     return render_template('albums.html', album='Hypnotised')
+
+@app.route('/albums')
 def get_albums():
-    return render_template('albums.html', album='Title: Hypnotised\n Released: 1980')
+    connection = get_flask_database_connection()
+    repository = AlbumRepository(connection)
+    albums = repository.all()
+    return render_template("albums.html", album=albums)
+
+
+
 
 @app.route('/albums', methods=['POST'])
 def post_albums():

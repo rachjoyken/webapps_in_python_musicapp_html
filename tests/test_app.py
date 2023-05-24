@@ -18,3 +18,15 @@ def test_get_emoji(page, test_web_address): # Note new parameters
     expect(strong_tag).to_have_text(":)")
 
 # === End Example Code ===
+
+def test_get_albums(page, test_web_address, db_connection):
+    db_connection.seed("seeds/album_table.sql")
+    page.goto(f"http://{test_web_address}/albums")
+    h2_tags = page.locator("h2")
+    paragraph_tags = page.locator("p")
+    expect(h2_tags).to_have_text([
+        'Hypnotised'
+    ])
+    expect(paragraph_tags).to_have_text([
+        '1980'
+    ])
