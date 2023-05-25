@@ -19,18 +19,6 @@ def get_emoji():
 
 #Exercise:
 
-# @app.route('/albums', methods=['GET'])
-# def get_albums():
-#     connection = get_flask_database_connection(app)
-#     repository = AlbumRepository(connection)
-#     return "\n".join(
-#         f"{album}" for album in repository.all()
-#     )
-
-# @app.route('/albums', methods=['GET'])
-# def get_albums():
-#     return render_template('albums.html', album='Hypnotised')
-
 @app.route('/albums')
 def get_albums():
     connection = get_flask_database_connection(app)
@@ -38,41 +26,9 @@ def get_albums():
     albums = repository.all()
     return render_template("albums.html", albums=albums)
 
-
-
-
-@app.route('/albums', methods=['POST'])
-def post_albums():
-    connection = get_flask_database_connection(app)
-    repository = AlbumRepository(connection)
-    album = Album(
-        None, 
-        request.form['title'],
-        request.form['release_year'],
-        request.form['artist_id'])
-    repository.create(album)
-    return '',200
-
 #Challenge:
 
-@app.route('/artists', methods=['GET'])
-def get_artists():
-    connection = get_flask_database_connection(app)
-    repository = ArtistRepository(connection)
-    return "\n".join(
-        f"{artist}" for artist in repository.all()
-    )
-    
-@app.route('/artists', methods=['POST'])
-def post_artists():
-    connection = get_flask_database_connection(app)
-    repository = ArtistRepository(connection)
-    artist = Artist(
-        None,
-        request.form['name'],
-        request.form['genre'])
-    repository.create(artist)
-    return '',200
+
 
 
 
