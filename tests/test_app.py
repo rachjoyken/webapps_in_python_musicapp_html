@@ -23,6 +23,7 @@ def test_get_albums(page, test_web_address, db_connection):
     db_connection.seed("seeds/album_table.sql")
     page.goto(f"http://{test_web_address}/albums")
     h2_tags = page.locator("h2")
+    page.screenshot(path="screenshot.png", full_page=True)
     paragraph_tags = page.locator("p")
     expect(h2_tags).to_have_text([
         'Hypnotised'

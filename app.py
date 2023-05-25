@@ -33,10 +33,10 @@ def get_emoji():
 
 @app.route('/albums')
 def get_albums():
-    connection = get_flask_database_connection()
+    connection = get_flask_database_connection(app)
     repository = AlbumRepository(connection)
     albums = repository.all()
-    return render_template("albums.html", album=albums)
+    return render_template("albums.html", albums=albums)
 
 
 
